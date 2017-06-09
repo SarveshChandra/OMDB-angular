@@ -1,9 +1,36 @@
 <html ng-app="omdb">
 <head>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js">
-	<script type="text/javascript" src="app.js">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
 </head>
-<body>
-<form name="appSearch">
+<body ng-controller="searchController as searchCtrl">
+<h1>Search API App</h1><br>
+<form ng-submit="run()">
+Search by title: <input ng-model="input" />
+<button action=submit>Search</button>
+</form>
+<button ng-click="reset()">Reset</button>
+<br><br><br><br>
+
+<div ng-hide="itemdisplay">
+Number of results: {{itemcount}}<br><br>
+<div ng-repeat="x in results">
+<h2>{{x.title}}</h2>
+<button href ng-click="setDisplay(x.title)">Show Details</button><br><br>
+</div>
+</div>
+
+<div ng-show="itemdisplay">
+<h2>{{results.title}}</h2>
+<div ng-show="results.media.m">
+Image<br><img src="{{results.media.m}}" />
+</div><br>
+Published on: {{results.published}}<br>
+Date taken: {{results.date_taken}}<br>
+Author: {{results.author}}
+<br><br>
+<button ng-click="run()">Back</button>
+</div>
+
 </body>
 </html>
