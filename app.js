@@ -10,7 +10,7 @@
 		$scope.itemdisplay=0;
 		$http({
 				method: 'GET',
-				url: 'http://deepknowhow.com/api.json'
+				url: 'http://deepknowhow.com/angularjs-apps/search-api/api.json'
 				}).then(function successCallback(response) {
 					$scope.data=response.data;
 				}, function errorCallback(response) {
